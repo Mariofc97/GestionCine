@@ -4,6 +4,7 @@ public class Usuario {
     private String nombre;
     private String dni;
     private int edad;
+    
     public String getNombre() {
 		return nombre;
 	}
