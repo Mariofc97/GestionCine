@@ -74,6 +74,10 @@ public class SalaDeCine {
 		if (user == null || n < 1) {
 			return new int[0][0];
 		}
+		
+		if(huecosLibres()<n) {
+			return new int[0][0];
+		}
 
 		int[][] asignadas = new int[n][2];
 		int contador = 0;
@@ -96,8 +100,7 @@ public class SalaDeCine {
 	}
 
 	public void mostrarSalaCine() {
-		System.out.println("Sala Cine " + getId());
-		System.out.println("Pelicula: " + pelicula.getTitulo());
+		disponibilidad();
 		System.out.println("Butacas: ");
 		for (int i = 0; i < butacas.length; i++) {
 			for (int j = 0; j < butacas[i].length; j++) {
@@ -111,7 +114,13 @@ public class SalaDeCine {
 			}
 
 		}
-
-		System.out.println("\n Butacas libres: " + huecosLibres());
+	}
+	
+	public void disponibilidad() {
+		System.out.println("------Sala Cine " + getId()+"------");
+		System.out.println("Pelicula: " + pelicula.getTitulo());
+		System.out.println("\nButacas libres: " + huecosLibres());
+		System.out.println("Precio por entrada: " + pelicula.getPrecio());
+		
 	}
 }
