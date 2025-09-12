@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import AppCine.Cine;
 import AppCine.Pelicula;
+import AppCine.SalaDeCine;
 import AppCine.Usuario;
 
 public class main {
@@ -11,30 +12,35 @@ public class main {
 	public static void main(String[] args) {
 
 		// Crear peliculas
-		Scanner scan = new Scanner(System.in);
+
+		Pelicula peli1 = new Pelicula("Avengers: Endgame", 181, 12.50, 1);
+		Pelicula peli2 = new Pelicula("The Batman", 176, 11.00, 2);
+		Pelicula peli3 = new Pelicula("Spider-Man: No Way Home", 148, 12.00, 3);
+		Pelicula peli4 = new Pelicula("Dune", 155, 13.00, 4);
+		Pelicula peli5 = new Pelicula("Encanto", 102, 9.50, 5);
 		
-
-		Pelicula[] peliculas = { new Pelicula("Avengers: Endgame", 181, 12, 12.50, "AVE001"),
-				new Pelicula("The Batman", 176, 16, 11.00, "BAT002"),
-				new Pelicula("Spider-Man: No Way Home", 148, 12, 10.50, "SPI003"),
-				new Pelicula("Dune", 155, 13, 13.00, "DUN004"), new Pelicula("Encanto", 102, 0, 9.50, "ENC005") };
-
-		// Crear salas bidimensionales
-		// Aqui iria la sala de cine lo de NEW SALA (new SalaDeCine("SALA1")
+		// Crear salas de cine
+		SalaDeCine sala1 = new SalaDeCine(1, peli1, 3, 4); // 3 filas 4 columnas: 12 butacas
+		SalaDeCine sala2 = new SalaDeCine(2, peli2, 3, 5); // 3 filas 5 columnas: 15 butacas
 
 		// Crear cine
 
-		Cine cine = new Cine("CineMax", salas);
+		Cine cine = new Cine("CineMax", new SalaDeCine[] {sala1, sala2});
 
 		// Crear usuarios
-		Usuario[] usuarios = { new Usuario("Gisleno Babarro", "12345678A", 25, 100.00),
-				new Usuario("Mario Ferron", "87654321B", 30, 80.00),
-				new Usuario("Carlos López", "11223344C", 17, 50.00) };
+		Usuario[] compradores = {
+				new Usuario("Gisleno Babarro", "12345678A"),
+				new Usuario("Mario Ferron", "87654321B"),
+				new Usuario("Carlos López", "11223344C") 
+				};
 
 		// Procesar turnos de usuarios
-		for (int i = 0; i < usuarios.length; i++) {
-			Usuario usuarioActual = usuarios[i];
-			System.out.println("\n=== TURNO DE: " + usuarioActual.getNombre() + " ===");
+		Scanner scan = new Scanner(System.in);
+		int opcion = 0;
+		
+		for (int i = 0; i < compradores.length; i++) {
+			Usuario usuarioActual = compradores[i];
+			System.out.println("\n=== TURNO DE: " + usuarioActual.getNombreUsuario() + " ===");
 
 			boolean usuarioActivo = true;
 
@@ -42,24 +48,32 @@ public class main {
 				System.out.println("\n=== MENÚ PRINCIPAL ===");
 				System.out.println("1. Listar peliculas y disponibilidad");
 				System.out.println("2. Comprar entradas");
-				System.out.println("3. Mostrar mapa visual de ocupacion");
-				System.out.println("4. Mostrar detalle completo de ocupacion");
-				System.out.println("5. Pasar al siguiente usuario");
-				System.out.println("6. Salir");
+				System.out.println("3. Mostrar ocupacion por sala");
+				System.out.println("4. Salir");
 				System.out.print("Seleccione una opcion: ");
-
-				int opcion = leerEntero(scan, 1, 6);
+				
+				opcion = scan.nextInt();
 
 				switch (opcion) {
 
 				case 1:
-					cine.listarEstadoSalas();
+					cine.listarEstadoCine();
 					break;
 
 				case 2:
-					comprar.Entradas(scanner, cine, usuarioActual);
+					sala1.comprarEntradas(usuarioActual, 2);
+					
+				case 3:
+					System.out.println("Imprimir mapa o indices de butacas, indicando cuales estan ocupadas y por quien");
 
+				case 4:
+					System.out.println("Adios " + usuarioActual.getNombreUsuario() + " !, vuelva pronto.");
+					usuarioActivo = false;
+					
+				default:
+					System.out.println("Opción incorrecta.");
 				}
+				
 
 			}
 

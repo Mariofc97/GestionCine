@@ -1,16 +1,16 @@
 package AppCine;
 
 public class Usuario {
-    private String nombre;
+    private String nombreUsuario;
     private String dni;
-    private int edad;
+    //private int edad;
     
-    public String getNombre() {
-		return nombre;
+    public String getNombreUsuario() {
+		return nombreUsuario;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombreUsuario(String nombre) {
+		this.nombreUsuario = nombre;
 	}
 
 	public String getDni() {
@@ -21,28 +21,27 @@ public class Usuario {
 		this.dni = dni;
 	}
 
-	public int getEdad() {
-		return edad;
-	}
+	//public int getEdad() {
+		//return edad;
+	//}
 
-	public void setEdad(int edad) {
-		this.edad = edad;
-	}
+	//public void setEdad(int edad) {
+		//this.edad = edad;
+	//}
 
-	public double getSaldo() {
-		return saldo;
-	}
+	//public double getSaldo() {
+		//return saldo;
+	//}
 
-	public void setSaldo(double saldo) {
-		this.saldo = saldo;
-	}
+	//public void setSaldo(double saldo) {
+		//this.saldo = saldo;
+	//}
 
 	private double saldo;
     
-    public Usuario(String nombre, String dni, int edad, double saldo) {
-        this.nombre = nombre;
+    public Usuario(String nombreUsuario, String dni) {
+        this.nombreUsuario = nombreUsuario;
         this.dni = dni;
-        this.edad = edad;
-        this.saldo = saldo;
+        //this.saldo = saldo;
     }
 }

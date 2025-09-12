@@ -4,9 +4,9 @@ public class Pelicula {
 
 	private String titulo;
     private int duracion;
-    private int clasificacionEdad;
+    //private int clasificacionEdad;
     private double precio;
-    private String id; 
+    private int id; 
     
     
     public String getTitulo() {
@@ -29,14 +29,14 @@ public class Pelicula {
 	}
 
 
-	public int getClasificacionEdad() {
-		return clasificacionEdad;
-	}
+	//public int getClasificacionEdad() {
+		//return clasificacionEdad;
+	//}
 
 
-	public void setClasificacionEdad(int clasificacionEdad) {
-		this.clasificacionEdad = clasificacionEdad;
-	}
+	//public void setClasificacionEdad(int clasificacionEdad) {
+		//this.clasificacionEdad = clasificacionEdad;
+	//}
 
 
 	public double getPrecio() {
@@ -49,19 +49,19 @@ public class Pelicula {
 	}
 
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
 
-	public Pelicula(String titulo, int duracion, int clasificacionEdad, double precio, String id) {
+	public Pelicula(String titulo, int duracion, double precio, int id) {
     	
-    this.clasificacionEdad= clasificacionEdad;
+    //this.clasificacionEdad= clasificacionEdad;
     this.duracion = duracion;
     this.titulo = titulo;
     this.precio = precio;
