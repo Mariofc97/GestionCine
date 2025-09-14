@@ -74,8 +74,8 @@ public class SalaDeCine {
 		if (user == null || n < 1) {
 			return new int[0][0];
 		}
-		
-		if(huecosLibres()<n) {
+
+		if (huecosLibres() < n) {
 			return new int[0][0];
 		}
 
@@ -84,13 +84,13 @@ public class SalaDeCine {
 
 		for (int i = 0; i < butacas.length && contador < n; i++) {
 			for (int j = 0; j < butacas[i].length && contador < n; j++) {
-				if (butacas[i][j]==null) {
+				if (butacas[i][j] == null) {
 					butacas[i][j] = user;
 					asignadas[contador][0] = i;
 					asignadas[contador][1] = j;
 					contador++;
 
-				} 
+				}
 			}
 
 		}
@@ -101,26 +101,38 @@ public class SalaDeCine {
 
 	public void mostrarSalaCine() {
 		disponibilidad();
-		System.out.println("Butacas: ");
+		System.out.println();
+		System.out.println("Sala: " + id + " || " + pelicula.getTitulo());
+		System.out.println();
+		String pantalla = "__Pantalla__";
+		System.out.println(pantalla);
+
 		for (int i = 0; i < butacas.length; i++) {
 			for (int j = 0; j < butacas[i].length; j++) {
 				String etiqueta;
 				if (butacas[i][j] == null) {
 					etiqueta = "_";
 				} else {
-					etiqueta = butacas[i][j].getNombreUsuario();
+					etiqueta = "X";
 				}
-				System.out.println("[" + etiqueta + "]");
+
+				System.out.print(etiqueta);
+
+				if (j < butacas[i].length - 1) {
+					System.out.print(" ");
+				}
 			}
+
+			System.out.println();
 
 		}
 	}
-	
+
 	public void disponibilidad() {
-		System.out.println("------Sala Cine " + getId()+"------");
+		System.out.println("------Sala Cine " + getId() + "------");
 		System.out.println("Pelicula: " + pelicula.getTitulo());
 		System.out.println("\nButacas libres: " + huecosLibres());
 		System.out.println("Precio por entrada: " + pelicula.getPrecio());
-		
+
 	}
 }

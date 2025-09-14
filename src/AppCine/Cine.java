@@ -83,4 +83,19 @@ public class Cine {
 			System.out.println();
 		}
 	}
+	
+	public static Cine abrirCine() {
+		Pelicula peli1 = new Pelicula("Avengers: Endgame", 181, 12.50, 1);
+		Pelicula peli2 = new Pelicula("The Batman", 176, 11.00, 2);
+		Pelicula peli3 = new Pelicula("Spider-Man: No Way Home", 148, 12.00, 3);
+		Pelicula peli4 = new Pelicula("Dune", 155, 13.00, 4);
+		Pelicula peli5 = new Pelicula("Encanto", 102, 9.50, 5);
+
+		// Crear salas de cine
+		SalaDeCine sala1 = new SalaDeCine(1, peli1, 6, 7); // 6 filas 7 columnas
+		SalaDeCine sala2 = new SalaDeCine(2, peli2, 7, 8); // 7 filas 8 columnas
+		
+		return new Cine("CineMax", new SalaDeCine[] { sala1, sala2 });
+		
+	}
 }
