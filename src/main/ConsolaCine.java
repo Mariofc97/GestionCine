@@ -7,8 +7,38 @@ import AppCine.SalaDeCine;
 import AppCine.Usuario;
 
 public class ConsolaCine {
+	
+	public static void start(int numUsuarios) {
+		Scanner scan = new Scanner(System.in);
+		Cine cine = Cine.abrirCine();
+		for (int i=0; i < numUsuarios; i++) {
+			Usuario u = pedirDatosUsuario(scan, i + 1);
+			ejecutarTurno(cine, u, scan);
+		}
+		
+		System.out.println("Todos los usuarios han pasado por el menú");
+	}
+	
+    private static Usuario pedirDatosUsuario(Scanner scan, int numero) {
+        System.out.println("\n--- Registro del usuario " + numero + " ---");
+        System.out.print("Nombre: ");
+        String nombre = scan.nextLine();   
+        if (nombre.isEmpty()) {            
+            nombre = scan.nextLine();
+        }
+        System.out.print("DNI: ");
+        String dni = scan.nextLine();
+        return new Usuario(nombre, dni);
+    }
+	private static void ejecutarTurno (Cine cine, Scanner scan, int numUsuarios) {
+		Usuario[] compradores = new Usuario[numUsuarios];
+		for (int i=0; i < numUsuarios; i++) {
+			compradores[i] = pedirDatosUsuario(scan, i + 1);
+			ejecutarTurno(cine, compradores[i],scan);
+		}
+	}
 
-    public static void ejecutarTurno(Cine cine, Usuario usuarioActual, Scanner scan) {
+    private static void ejecutarTurno(Cine cine, Usuario usuarioActual, Scanner scan) {
         System.out.println("\n=== TURNO DE: " + usuarioActual.getNombreUsuario() + " ===");
 
         boolean usuarioActivo = true;

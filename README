@@ -1,0 +1,3 @@
+En el main unicamente debes de escribir:
+
+ConsolaCine.start(3); // 3 o el numero de usuarios que desees incluir para pasar por el menu.
